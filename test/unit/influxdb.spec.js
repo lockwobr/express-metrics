@@ -20,7 +20,7 @@ describe('Influxdb Integration', function () {
       (function (){
         optionsChecker.check({
           port: 1234,
-          statsd: {
+          influxdb: {
             host: 'localhost',
             database: 'foo'
           }
@@ -32,7 +32,7 @@ describe('Influxdb Integration', function () {
       (function (){
         optionsChecker.check({
           port: 1234,
-          statsd: {
+          influxdb: {
             host: 'localhost',
           }
         });
@@ -44,7 +44,7 @@ describe('Influxdb Integration', function () {
       (function (){
         optionsChecker.check({
           port: 1234,
-          statsd: {
+          influxdb: {
             database: 'foo',
           }
         });
