@@ -161,6 +161,24 @@ Example:
 
 Just the routes that you indicate in the 'routes' option will be sent to statsd.
 
+### influxdb: Object (default: undefined)
+Optionally you can send the metrics to influxdb. In order to do that you just need to provide the influxdb config in the options.
+
+Example:
+
+```js
+  
+  app.use(expressMetrics({
+    port: 8091,
+    influxdb: { protocol: 'http', // optional, can be http/udp
+                host:  "influxdbhost", // required
+                database: "express-metrics" // requried
+              }
+  }));
+
+```
+
+
 
 ### cluster: Boolean (default: false)
 
