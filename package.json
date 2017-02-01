@@ -7,9 +7,10 @@
   "dependencies": {
     "log4js": "^0.6.26",
     "metrics": "latest",
-    "mocha": "^2.2.1",
+    "metrics-influxdb": "0.0.7",
     "node-statsd": "^0.1.1",
-    "on-headers": "^1.0.0"
+    "on-headers": "^1.0.0",
+    "os": "^0.1.1"
   },
   "devDependencies": {
     "express": "^4.12.2",
@@ -18,7 +19,8 @@
     "request": "^2.53.0",
     "should": "^5.1.0",
     "supertest": "^0.15.0",
-    "sinon": "^1.15.3"
+    "sinon": "^1.15.3",
+    "mocha": "^2.2.1"
   },
   "repository": {
     "type": "git",

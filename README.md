@@ -24,7 +24,7 @@ var app = express();
 // start a metrics server
 app.use(expressMetrics({
   port: 8091
-});
+}));
 
 // every time this handler returns the greet, express-metrics
 // will update the metrics with the calculated response time
@@ -147,19 +147,37 @@ Example:
     statsd: {
       'host': 'localhost',
       'port': 8125,
-      'prefix': require('os').hostname() + '.myService'
+      'prefix': require('os').hostname() + '.myService',
       'routes': {
         'showUserCampaigns': [{ path: '/campaigns/:userId/lite', methods: ['get']}],
         'showCampaign':  [{ path: '/campaign/:campaignId', methods: ['get']}],
         'showUserShops': { path: '/shop/:userId', method: 'get'}
       }
     }
-  });
+  }));
 
 
 ```
 
 Just the routes that you indicate in the 'routes' option will be sent to statsd.
+
+### influxdb: Object (default: undefined)
+Optionally you can send the metrics to influxdb. In order to do that you just need to provide the influxdb config in the options.
+
+Example:
+
+```js
+  
+  app.use(expressMetrics({
+    port: 8091,
+    influxdb: { protocol: 'http', // optional, can be http/udp
+                host:  "influxdbhost", // required
+                database: "express-metrics" // requried
+              }
+  }));
+
+```
+
 
 
 ### cluster: Boolean (default: false)
@@ -187,7 +205,7 @@ if (cluster.isMaster) {
   // it must send the measured times to master process
   app.use(expressMetrics({
     cluster: true
-  });
+  }));
 
   app.get('/', function (req, res, next) {
     res.json({ greet: 'Hello world!' });
